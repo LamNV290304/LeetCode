@@ -400,7 +400,20 @@ namespace LeetCode
             return maxArea;
         }
 
-
+        public string LongestCommonPrefix(string[] strs)
+        {
+            if (strs == null || strs.Length == 0) return "";
+            System.String ss = strs[0];
+            for (int i = 1; i < strs.Length; i++)
+            {
+                while (!strs[i].StartsWith(ss))
+                {
+                    ss = ss.Substring(0, ss.Length - 1);
+                    if (ss == "") return "";
+                }
+            }
+            return ss;
+        }
 
         public IList<IList<int>> ThreeSum(int[] nums)
         {
