@@ -421,7 +421,7 @@ namespace LeetCode
             IList<IList<int>> result = new List<IList<int>>();
             for (int i = 0; i < nums.Length - 2; i++)
             {
-                if (i > 0 && nums[i] == nums[i - 1]) continue;  
+                if (i > 0 && nums[i] == nums[i - 1]) continue;
                 int left = i + 1;
                 int right = nums.Length - 1;
                 while (left < right)
@@ -463,7 +463,7 @@ namespace LeetCode
                     int right = nums.Length - 1;
                     while (left < right)
                     {
-                        long sum = (long) nums[i] + nums[j] + nums[left] + nums[right];
+                        long sum = (long)nums[i] + nums[j] + nums[left] + nums[right];
                         if (sum == target)
                         {
                             result.Add(new List<int> { nums[i], nums[j], nums[left], nums[right] });
@@ -485,6 +485,26 @@ namespace LeetCode
             }
             return result;
         }
+
+        public ListNode RemoveNthFromEnd(ListNode head, int n)
+        {
+            ListNode current = head;
+            do
+            {
+                head = head.next;
+                int count = 0;
+                while (head != null)
+                {
+                    count++;
+                    if (count == n)
+                    {
+                        current = current.next;
+                    }
+                }
+            } while (current.next != null);
+
+            return head;
+        }
         #endregion
 
         //Tip 0ms runtime display =)))))))
@@ -494,6 +514,17 @@ namespace LeetCode
         #region Private Function
 
         #endregion
+    }
+
+    public class ListNode
+    {
+        public int val;
+        public ListNode next;
+        public ListNode(int val = 0, ListNode next = null)
+        {
+            this.val = val;
+            this.next = next;
+        }
     }
 }
 
