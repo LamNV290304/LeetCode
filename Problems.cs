@@ -488,22 +488,26 @@ namespace LeetCode
 
         public ListNode RemoveNthFromEnd(ListNode head, int n)
         {
-            ListNode current = head;
-            do
-            {
-                head = head.next;
-                int count = 0;
-                while (head != null)
-                {
-                    count++;
-                    if (count == n)
-                    {
-                        current = current.next;
-                    }
-                }
-            } while (current.next != null);
+            ListNode dummy = new ListNode(0);
+            dummy.next = head;
 
-            return head;
+            ListNode fast = dummy;
+            ListNode slow = dummy;
+
+            for (int i = 0; i < n; i++)
+            {
+                fast = fast.next;
+            }
+
+            while (fast.next != null)
+            {
+                fast = fast.next;
+                slow = slow.next;
+            }
+
+            slow.next = slow.next.next;
+
+            return dummy.next;
         }
         #endregion
 
