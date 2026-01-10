@@ -555,15 +555,26 @@ namespace LeetCode
 
                 if (current1.next != null)
                 {
+                    if (current1.val <= current2.val && current1.next.val >= current2.val)
+                    {
+                        ListNode temp = current1.next;
+                        current1.next = current2;
+                        current2 = temp;
+                    }
                     current1 = current1.next;
                 }
                 if (current2.next != null)
                 {
+                    if (current2.val <= current1.val && current2.next.val >= current1.val)
+                    {
+                        ListNode temp = current2.next;
+                        current2.next = current1;
+                        current1 = temp;
+                    }
                     current2 = current2.next;
                 }
             }
 
-            return result;
         }
         #endregion
 
