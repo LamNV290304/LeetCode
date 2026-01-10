@@ -536,6 +536,23 @@ namespace LeetCode
             }
             return stack.Count == 0;
         }
+
+        public ListNode MergeTwoLists(ListNode list1, ListNode list2)
+        {
+            ListNode current1 = new ListNode(0);
+            ListNode current2 = new ListNode(0);
+
+
+            while (current1.next != null)
+            {
+                while (current2.next != null)
+                {
+
+                }
+            }
+
+            return result;
+        }
         #endregion
 
         //Tip 0ms runtime display =)))))))
