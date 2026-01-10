@@ -539,53 +539,42 @@ namespace LeetCode
 
         public ListNode MergeTwoLists(ListNode list1, ListNode list2)
         {
-            ListNode current1 = new ListNode(0);
-            ListNode current2 = new ListNode(0);
+            ListNode dummy = new ListNode(0);
+            ListNode tail = dummy;
 
-            current1 = list1;
-            current2 = list2;
-
-
-            while (true)
+            while (list1 != null && list2 != null)
             {
-                if (list1 == null && current2 == list2)
+                if (list1.val <= list2.val)
                 {
-                    return null;
+                    tail.next = list1;
+                    list1 = list1.next;
                 }
-
-                if (current1.next != null)
+                else
                 {
-                    if (current1.val <= current2.val && current1.next.val >= current2.val)
-                    {
-                        ListNode temp = current1.next;
-                        current1.next = current2;
-                        current2 = temp;
-                    }
-                    current1 = current1.next;
+                    tail.next = list2;
+                    list2 = list2.next;
                 }
-                if (current2.next != null)
-                {
-                    if (current2.val <= current1.val && current2.next.val >= current1.val)
-                    {
-                        ListNode temp = current2.next;
-                        current2.next = current1;
-                        current1 = temp;
-                    }
-                    current2 = current2.next;
-                }
+                tail = tail.next;
             }
 
+            if (list1 != null) tail.next = list1;
+            if (list2 != null) tail.next = list2;
+
+            return dummy.next;
         }
-        #endregion
 
-        //Tip 0ms runtime display =)))))))
 
-        //AppDomain.CurrentDomain.ProcessExit += (s, e) =>
-        //    File.WriteAllText("display_runtime.txt", "00000");
-        #region Private Function
-
-        #endregion
     }
+    #endregion
+
+    //Tip 0ms runtime display =)))))))
+
+    //AppDomain.CurrentDomain.ProcessExit += (s, e) =>
+    //    File.WriteAllText("display_runtime.txt", "00000");
+    #region Private Function
+
+    #endregion
+}
 
     public class ListNode
     {
