@@ -556,7 +556,6 @@ namespace LeetCode
                 }
                 tail = tail.next;
             }
-
             if (list1 != null) tail.next = list1;
             if (list2 != null) tail.next = list2;
 
