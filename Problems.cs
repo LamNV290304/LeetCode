@@ -542,12 +542,24 @@ namespace LeetCode
             ListNode current1 = new ListNode(0);
             ListNode current2 = new ListNode(0);
 
+            current1 = list1;
+            current2 = list2;
 
-            while (current1.next != null)
+
+            while (true)
             {
-                while (current2.next != null)
+                if (list1 == null && current2 == list2)
                 {
+                    return null;
+                }
 
+                if (current1.next != null)
+                {
+                    current1 = current1.next;
+                }
+                if (current2.next != null)
+                {
+                    current2 = current2.next;
                 }
             }
 
