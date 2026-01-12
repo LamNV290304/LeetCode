@@ -10,6 +10,7 @@ namespace LeetCode
     {
         public bool IsValidSudoku(char[][] board)
         {
+
             HashSet<string> seen = new HashSet<string>();
 
             for (int i = 0; i < 9; i++)
