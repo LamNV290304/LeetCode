@@ -561,6 +561,7 @@ namespace LeetCode
 
             return dummy.next;
         }
+
         public IList<string> GenerateParenthesis(int n)
         {
             IList<string> result = new List<string>();
