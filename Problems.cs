@@ -626,25 +626,26 @@ namespace LeetCode
         }
 
 
-    #endregion
+        #endregion
 
-    //Tip 0ms runtime display =)))))))
+        //Tip 0ms runtime display =)))))))
 
-    //AppDomain.CurrentDomain.ProcessExit += (s, e) =>
-    //    File.WriteAllText("display_runtime.txt", "00000");
-    #region Private Function
+        //AppDomain.CurrentDomain.ProcessExit += (s, e) =>
+        //    File.WriteAllText("display_runtime.txt", "00000");
+        #region Private Function
 
-    #endregion
-}
+        #endregion
 
-public class ListNode
-{
-    public int val;
-    public ListNode next;
-    public ListNode(int val = 0, ListNode next = null)
-    {
-        this.val = val;
-        this.next = next;
+        public class ListNode
+        {
+            public int val;
+            public ListNode next;
+            public ListNode(int val = 0, ListNode next = null)
+            {
+                this.val = val;
+                this.next = next;
+            }
+        }
     }
 }
 
