@@ -584,8 +584,38 @@ namespace LeetCode
             Backtrack("", 0, 0);
             return result;
         }
+        public ListNode MergeKLists(ListNode[] lists)
+        {
+            if (lists == null || lists.Length == 0) return null;
 
-    }
+            Dictionary<int, int> dic = new Dictionary<int, int>();
+
+            foreach (ListNode l in lists) {
+                ListNode current = l;
+                while (current != null)
+                {
+                    if (!dic.ContainsKey(current.val))
+                    {
+                        dic[current.val] = 1;
+                    }
+                    else
+                    {
+                        dic[current.val]++;
+                    }
+                    current = current.next;
+                }
+            }
+            var sortedKeys = dic.Keys.ToList();
+            sortedKeys.Sort();
+
+            ListNode dummy = new ListNode(0);
+            ListNode tail = dummy;
+            foreach (ListNode l in lists) {
+                tail = l;
+
+        }
+
+
     #endregion
 
     //Tip 0ms runtime display =)))))))
