@@ -590,7 +590,8 @@ namespace LeetCode
 
             Dictionary<int, int> dic = new Dictionary<int, int>();
 
-            foreach (ListNode l in lists) {
+            foreach (ListNode l in lists)
+            {
                 ListNode current = l;
                 while (current != null)
                 {
@@ -605,14 +606,22 @@ namespace LeetCode
                     current = current.next;
                 }
             }
-            var sortedKeys = dic.Keys.ToList();
-            sortedKeys.Sort();
+            var sortedDict = new SortedDictionary<int, int>(dic);
 
-            ListNode dummy = new ListNode(0);
-            ListNode tail = dummy;
-            foreach (ListNode l in lists) {
-                tail = l;
+            ListNode dummy = new ListNode(s);
+            foreach (var kvp in sortedDict)
+            {
+                int val = kvp.Key;
+                int count = kvp.Value;
+                for (int i = 0; i < count; i++)
+                {
+                    ListNode newNode = new ListNode(val);
+                    newNode.next = dummy.next;
+                    dummy.next = newNode;
+                }
+            }
 
+            return dummy;
         }
 
 
