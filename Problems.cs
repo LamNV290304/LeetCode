@@ -625,6 +625,34 @@ namespace LeetCode
             return head.next;
         }
 
+        //public ListNode MergeKLists(ListNode[] lists)
+        //{
+        //    ListNode mergedList = new ListNode(0);
+        //    var heap = new PriorityQueue<ListNode, int>(lists.Length);
+
+        //    foreach (var head in lists)
+        //    {
+        //        if (head != null)
+        //        {
+        //            heap.Enqueue(head, head.val);
+        //        }
+        //    }
+
+        //    var current = mergedList;
+
+        //    while (heap.Count != 0)
+        //    {
+        //        var smallest = heap.Dequeue();
+
+        //        current.next = smallest;
+        //        current = current.next;
+
+        //        if (smallest.next != null)
+        //            heap.Enqueue(smallest.next, smallest.next.val);
+        //    }
+
+        //    return mergedList.next;
+        //}
 
         #endregion
 
