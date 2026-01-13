@@ -608,8 +608,8 @@ namespace LeetCode
             }
             var sortedDict = new SortedDictionary<int, int>(dic);
 
-            ListNode dummy = new ListNode(0);
             ListNode head = new ListNode(0);
+            ListNode dummy = head;
             foreach (var kvp in sortedDict)
             {
                 int val = kvp.Key;
@@ -622,7 +622,7 @@ namespace LeetCode
                 }
             }
 
-            return dummy.next;
+            return head.next;
         }
 
 
