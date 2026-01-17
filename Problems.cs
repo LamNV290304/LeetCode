@@ -13,27 +13,27 @@ namespace LeetCode
         #region Solution
         public int[] TwoSum(int[] nums, int target)
         {
-            //int[] ints = new int[2];
-            //int n = nums.Length;
-            //int j = 0;
-            //for (int i = j + 1; i < n; i++)
-            //{
+            int[] ints = new int[2];
+            int n = nums.Length;
+            int j = 0;
+            for (int i = j + 1; i < n; i++)
+            {
 
-            //    if ((nums[j] + nums[i]) == target)
-            //    {
-            //        ints[0] = j;
-            //        ints[1] = i;
-            //        return ints;
-            //    }
+                if ((nums[j] + nums[i]) == target)
+                {
+                    ints[0] = j;
+                    ints[1] = i;
+                    return ints;
+                }
 
 
-            //    if (i == n - 1 && j != n)
-            //    {
-            //        j++;
-            //        i = j;
-            //    }
-            //}
-            //return ints;
+                if (i == n - 1 && j != n)
+                {
+                    j++;
+                    i = j;
+                }
+            }
+            return ints;
 
             var numMap = new Dictionary<int, int>
             {
