@@ -126,7 +126,6 @@ namespace LeetCode
                     }
                 }
             }
-
             for (int i = 1; i <= numRows; i++)
             {
                 result += dic[i];
