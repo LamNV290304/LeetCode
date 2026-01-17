@@ -34,7 +34,6 @@ namespace LeetCode
             //    }
             //}
             //return ints;
-
             var numMap = new Dictionary<int, int>
             {
                 [nums[0]] = 0
