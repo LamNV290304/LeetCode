@@ -669,6 +669,37 @@ namespace LeetCode
             }
             return dummy.next;
         }
+
+        public ListNode ReverseKGroup(ListNode head, int k)
+        {
+            ListNode dummy = new ListNode(0);
+            dummy.next = head;
+            ListNode prevGroupEnd = dummy;
+            while (true)
+            {
+                ListNode kthNode = prevGroupEnd;
+                for (int i = 0; i < k && kthNode != null; i++)
+                {
+                    kthNode = kthNode.next;
+                }
+                if (kthNode == null) break;
+                ListNode groupStart = prevGroupEnd.next;
+                ListNode nextGroupStart = kthNode.next;
+                ListNode prev = nextGroupStart;
+                ListNode current = groupStart;
+                while (current != nextGroupStart)
+                {
+                    ListNode temp = current.next;
+                    current.next = prev;
+                    prev = current;
+                    current = temp;
+                }
+                prevGroupEnd.next = kthNode;
+                prevGroupEnd = groupStart;
+            }
+            return dummy.next;
+
+        }
         #endregion
 
         //Tip 0ms runtime display =)))))))
