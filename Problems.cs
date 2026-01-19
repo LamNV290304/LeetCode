@@ -18,14 +18,12 @@ namespace LeetCode
             //int j = 0;
             //for (int i = j + 1; i < n; i++)
             //{
-
             //    if ((nums[j] + nums[i]) == target)
             //    {
             //        ints[0] = j;
             //        ints[1] = i;
             //        return ints;
             //    }
-
 
             //    if (i == n - 1 && j != n)
             //    {
@@ -698,7 +696,6 @@ namespace LeetCode
                 prevGroupEnd = groupStart;
             }
             return dummy.next;
-
         }
         #endregion
 
