@@ -697,6 +697,11 @@ namespace LeetCode
             }
             return dummy.next;
         }
+
+        public int RemoveDuplicates(int[] nums)
+        {
+
+        }
         #endregion
 
         //Tip 0ms runtime display =)))))))
