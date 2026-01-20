@@ -715,6 +715,24 @@ namespace LeetCode
 
             return k;
         }
+
+        public int RemoveElement(int[] nums, int val)
+        {
+            if (nums == null || nums.Length == 0) return 0;
+
+            int k = 1;
+
+            for (int i = 1; i < nums.Length; i++)
+            {
+                if (nums[i] == val)
+                {
+                    nums[k] = nums[i];
+                    k++;
+                }
+            }
+
+            return k;
+        }
         #endregion
 
         //Tip 0ms runtime display =)))))))
