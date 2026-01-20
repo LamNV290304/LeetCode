@@ -720,11 +720,11 @@ namespace LeetCode
         {
             if (nums == null || nums.Length == 0) return 0;
 
-            int k = 1;
+            int k = 0;
 
-            for (int i = 1; i < nums.Length; i++)
+            for (int i = 0; i < nums.Length; i++)
             {
-                if (nums[i] == val)
+                if (nums[i] != val)
                 {
                     nums[k] = nums[i];
                     k++;
