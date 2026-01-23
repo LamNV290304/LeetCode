@@ -776,7 +776,12 @@ namespace LeetCode
             }
             return (int)(sign * quotient);
         }
-
+        /// <summary>
+        //q         = 0101
+        //1 << 1    = 0010
+        //----------------
+        //q | mask  = 0111
+        /// </summary>
         //public int Divide(int dividend, int divisor)
         //{
         //    if (dividend == int.MinValue && divisor == -1)
