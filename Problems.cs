@@ -796,7 +796,6 @@ namespace LeetCode
                 }
             }
 
-            // 符号を戻す
             if ((dividend < 0) ^ (divisor < 0))
                 q = -q;
 
