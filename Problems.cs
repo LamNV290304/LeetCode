@@ -777,30 +777,30 @@ namespace LeetCode
             return (int)(sign * quotient);
         }
 
-        public int Divide(int dividend, int divisor)
-        {
-            if (dividend == int.MinValue && divisor == -1)
-                return int.MaxValue;
+        //public int Divide(int dividend, int divisor)
+        //{
+        //    if (dividend == int.MinValue && divisor == -1)
+        //        return int.MaxValue;
 
-            long a = Math.Abs((long)dividend);
-            long b = Math.Abs((long)divisor);
+        //    long a = Math.Abs((long)dividend);
+        //    long b = Math.Abs((long)divisor);
 
-            int q = 0;
+        //    int q = 0;
 
-            for (int i = 31; i >= 0; i--)
-            {
-                if (a >= (b << i))
-                {
-                    a -= (b << i);
-                    q |= (1 << i);
-                }
-            }
+        //    for (int i = 31; i >= 0; i--)
+        //    {
+        //        if (a >= (b << i))
+        //        {
+        //            a -= (b << i);
+        //            q |= (1 << i);
+        //        }
+        //    }
 
-            if ((dividend < 0) ^ (divisor < 0))
-                q = -q;
+        //    if ((dividend < 0) ^ (divisor < 0))
+        //        q = -q;
 
-            return q;
-        }
+        //    return q;
+        //}
         #endregion
 
         //Tip 0ms runtime display =)))))))
