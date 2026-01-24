@@ -852,12 +852,10 @@ namespace LeetCode
                 int count = 0;       // số word hợp lệ trong cửa sổ hiện tại
                 Dictionary<string, int> seenWords = new Dictionary<string, int>();
 
-                // right dịch từng block wordLength
                 for (int right = offset; right + wordLength <= s.Length; right += wordLength)
                 {
                     string word = s.Substring(right, wordLength);
 
-                    // Nếu word không thuộc words → reset window
                     if (!wordCount.ContainsKey(word))
                     {
                         seenWords.Clear();
@@ -866,7 +864,6 @@ namespace LeetCode
                         continue;
                     }
 
-                    // Thêm word vào window
                     if (seenWords.ContainsKey(word))
                         seenWords[word]++;
                     else
