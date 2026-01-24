@@ -843,32 +843,54 @@ namespace LeetCode
             }
             for (int i = 0; i <= s.Length - substringLength; i++)
             {
+                // Dictionary tạm để đếm số lần xuất hiện của từng word
+                // trong cửa sổ bắt đầu từ vị trí i
                 Dictionary<string, int> seenWords = new Dictionary<string, int>();
+
                 int j = 0;
+
+                // Duyệt từng word (mỗi word có độ dài wordLength)
                 while (j < totalWords)
                 {
+                    // Tính vị trí bắt đầu của word thứ j
+                    // i          : vị trí bắt đầu substring
+                    // j*wordLength : dịch sang word tiếp theo
                     int wordIndex = i + j * wordLength;
+
+                    // Cắt ra đúng 1 word từ chuỗi s
                     string word = s.Substring(wordIndex, wordLength);
+
+                    // Nếu word này có nằm trong danh sách words cần tìm
                     if (wordCount.ContainsKey(word))
                     {
+                        // Tăng số lần xuất hiện của word trong substring hiện tại
                         if (seenWords.ContainsKey(word))
                             seenWords[word]++;
                         else
                             seenWords[word] = 1;
+
+                        // Nếu số lần xuất hiện vượt quá yêu cầu → không hợp lệ
                         if (seenWords[word] > wordCount[word])
                             break;
                     }
                     else
                     {
+                        // Gặp word không tồn tại trong words → fail ngay
                         break;
                     }
+
+                    // Chuyển sang kiểm tra word tiếp theo
                     j++;
                 }
+
+                // Nếu đã kiểm tra đủ totalWords mà không bị break
+                // → substring tại vị trí i là hợp lệ
                 if (j == totalWords)
                 {
                     result.Add(i);
                 }
             }
+
             return result;
         }
         #endregion
