@@ -825,6 +825,52 @@ namespace LeetCode
 
         //    return q;
         //}
+
+        public IList<int> FindSubstring(string s, string[] words)
+        {
+            IList<int> result = new List<int>();
+            if (words.Length == 0 || s.Length == 0) return result;
+            int wordLength = words[0].Length;
+            int totalWords = words.Length;
+            int substringLength = wordLength * totalWords;
+            Dictionary<string, int> wordCount = new Dictionary<string, int>();
+            foreach (string word in words)
+            {
+                if (wordCount.ContainsKey(word))
+                    wordCount[word]++;
+                else
+                    wordCount[word] = 1;
+            }
+            for (int i = 0; i <= s.Length - substringLength; i++)
+            {
+                Dictionary<string, int> seenWords = new Dictionary<string, int>();
+                int j = 0;
+                while (j < totalWords)
+                {
+                    int wordIndex = i + j * wordLength;
+                    string word = s.Substring(wordIndex, wordLength);
+                    if (wordCount.ContainsKey(word))
+                    {
+                        if (seenWords.ContainsKey(word))
+                            seenWords[word]++;
+                        else
+                            seenWords[word] = 1;
+                        if (seenWords[word] > wordCount[word])
+                            break;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    j++;
+                }
+                if (j == totalWords)
+                {
+                    result.Add(i);
+                }
+            }
+            return result;
+        }
         #endregion
 
         //Tip 0ms runtime display =)))))))
