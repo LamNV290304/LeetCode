@@ -890,6 +890,78 @@ namespace LeetCode
             return result;
         }
 
+        //public IList<int> FindSubstring(string s, string[] words)
+        //{
+
+        //    int n = words.Length;
+        //    int m = words[0].Length;
+        //    if (s.Length < m * n)
+        //    {
+        //        return new List<int>();
+        //    }
+
+        //    var dict = new Dictionary<string, int>();
+        //    var counts = new int[n];
+        //    for (int i = 0; i < n; i++)
+        //    {
+        //        if (!dict.ContainsKey(words[i]))
+        //        {
+        //            dict[words[i]] = i;
+        //        }
+        //        counts[dict[words[i]]]++;
+        //    }
+
+        //    var result = new List<int>();
+
+        //    for (int i = 0; i < m; i++)
+        //    {
+
+        //        int l = i;
+
+        //        var map = new int[n];
+        //        int count = 0;
+
+        //        while (l + n * m <= s.Length)
+        //        {
+
+        //            if (count == n)
+        //            {
+        //                result.Add(l);
+
+        //                map[dict[s.Substring(l, m)]]--;
+
+        //                count--;
+
+        //                l += m;
+        //                continue;
+        //            }
+
+        //            string candidate = s.Substring(l + count * m, m);
+
+        //            if (!dict.ContainsKey(candidate) || map[dict[candidate]] == counts[dict[candidate]])
+        //            {
+
+        //                if (count > 0)
+        //                {
+
+        //                    map[dict[s.Substring(l, m)]]--;
+
+        //                    count--;
+        //                }
+
+        //                l += m;
+
+        //                continue;
+        //            }
+
+        //            map[dict[candidate]]++;
+        //            count++;
+        //        }
+        //    }
+
+        //    return result;
+        //}
+
         #endregion
 
         //Tip 0ms runtime display =)))))))
