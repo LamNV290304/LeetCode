@@ -883,7 +883,6 @@ namespace LeetCode
                         left += wordLength;
                     }
 
-                    // Nếu đủ số word → tìm được 1 vị trí hợp lệ
                     if (count == totalWords)
                     {
                         result.Add(left);
