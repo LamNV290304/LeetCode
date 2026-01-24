@@ -765,15 +765,34 @@ namespace LeetCode
             long quotient = 0;
             while (dvd >= dvs)
             {
+                // NOTE:
+                // Mỗi vòng lặp ngoài tương ứng với việc "lấy đi" một khối lớn nhất có thể
+                // của divisor (dvs) từ dividend (dvd).
+                //
+                // Ý tưởng:
+                // - temp   : divisor đã được nhân lên bằng 2^k (thông qua dịch trái)
+                // - multiple: số lần divisor đã được nhân (2^k), sẽ cộng vào kết quả
+                //
+                // Vòng lặp trong sẽ tìm giá trị lớn nhất:
+                //   temp = dvs * 2^k  sao cho temp <= dvd
+                // Điều này giúp giảm số lần trừ, từ O(n) xuống O(log n).
+
                 long temp = dvs, multiple = 1;
+
                 while (dvd >= (temp << 1))
                 {
+                    // temp <<= 1     => temp = temp * 2
+                    // multiple <<= 1 => multiple = multiple * 2
+                    // Tức là đang thử nhân đôi divisor để xem còn trừ được không
                     temp <<= 1;
                     multiple <<= 1;
                 }
-                dvd -= temp;
-                quotient += multiple;
+
+                // Sau khi tìm được temp lớn nhất có thể trừ:
+                dvd -= temp;          // trừ khối lớn nhất
+                quotient += multiple; // cộng số lần tương ứng vào kết quả
             }
+
             return (int)(sign * quotient);
         }
         /// <summary>
