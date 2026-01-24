@@ -830,9 +830,12 @@ namespace LeetCode
         {
             IList<int> result = new List<int>();
             if (words.Length == 0 || s.Length == 0) return result;
+
             int wordLength = words[0].Length;
             int totalWords = words.Length;
             int substringLength = wordLength * totalWords;
+
+            // Đếm tần suất words cần tìm
             Dictionary<string, int> wordCount = new Dictionary<string, int>();
             foreach (string word in words)
             {
@@ -841,58 +844,56 @@ namespace LeetCode
                 else
                     wordCount[word] = 1;
             }
-            for (int i = 0; i <= s.Length - substringLength; i++)
+
+            // Duyệt theo từng offset (0 → wordLength - 1)
+            for (int offset = 0; offset < wordLength; offset++)
             {
-                // Dictionary tạm để đếm số lần xuất hiện của từng word
-                // trong cửa sổ bắt đầu từ vị trí i
+                int left = offset;   // đầu cửa sổ
+                int count = 0;       // số word hợp lệ trong cửa sổ hiện tại
                 Dictionary<string, int> seenWords = new Dictionary<string, int>();
 
-                int j = 0;
-
-                // Duyệt từng word (mỗi word có độ dài wordLength)
-                while (j < totalWords)
+                // right dịch từng block wordLength
+                for (int right = offset; right + wordLength <= s.Length; right += wordLength)
                 {
-                    // Tính vị trí bắt đầu của word thứ j
-                    // i          : vị trí bắt đầu substring
-                    // j*wordLength : dịch sang word tiếp theo
-                    int wordIndex = i + j * wordLength;
+                    string word = s.Substring(right, wordLength);
 
-                    // Cắt ra đúng 1 word từ chuỗi s
-                    string word = s.Substring(wordIndex, wordLength);
-
-                    // Nếu word này có nằm trong danh sách words cần tìm
-                    if (wordCount.ContainsKey(word))
+                    // Nếu word không thuộc words → reset window
+                    if (!wordCount.ContainsKey(word))
                     {
-                        // Tăng số lần xuất hiện của word trong substring hiện tại
-                        if (seenWords.ContainsKey(word))
-                            seenWords[word]++;
-                        else
-                            seenWords[word] = 1;
-
-                        // Nếu số lần xuất hiện vượt quá yêu cầu → không hợp lệ
-                        if (seenWords[word] > wordCount[word])
-                            break;
+                        seenWords.Clear();
+                        count = 0;
+                        left = right + wordLength;
+                        continue;
                     }
+
+                    // Thêm word vào window
+                    if (seenWords.ContainsKey(word))
+                        seenWords[word]++;
                     else
+                        seenWords[word] = 1;
+
+                    count++;
+
+                    // Nếu word xuất hiện quá số lần cho phép → thu hẹp cửa sổ
+                    while (seenWords[word] > wordCount[word])
                     {
-                        // Gặp word không tồn tại trong words → fail ngay
-                        break;
+                        string leftWord = s.Substring(left, wordLength);
+                        seenWords[leftWord]--;
+                        count--;
+                        left += wordLength;
                     }
 
-                    // Chuyển sang kiểm tra word tiếp theo
-                    j++;
-                }
-
-                // Nếu đã kiểm tra đủ totalWords mà không bị break
-                // → substring tại vị trí i là hợp lệ
-                if (j == totalWords)
-                {
-                    result.Add(i);
+                    // Nếu đủ số word → tìm được 1 vị trí hợp lệ
+                    if (count == totalWords)
+                    {
+                        result.Add(left);
+                    }
                 }
             }
 
             return result;
         }
+
         #endregion
 
         //Tip 0ms runtime display =)))))))
