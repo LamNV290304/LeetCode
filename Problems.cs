@@ -961,7 +961,37 @@ namespace LeetCode
 
         //    return result;
         //}
+        public void NextPermutation(int[] nums)
+        {
+            int pivot = -1;
+            for (int i = nums.Length - 2; i >= 0; i--)
+            {
+                if (nums[i] < nums[i + 1])
+                {
+                    pivot = i;
+                    break;
+                }
+            }
+            if (pivot == -1)
+            {
+                Array.Reverse(nums);
+                return;
+            }
 
+            for (int i = nums.Length - 1; i > pivot; i--)
+            {
+                if (nums[i] > nums[pivot])
+                {
+                    int temp = nums[i];
+                    nums[i] = nums[pivot];
+                    nums[pivot] = temp;
+                    break;
+                }
+            }
+
+            Array.Reverse(nums, pivot + 1, nums.Length - pivot - 1);
+            return;
+        }
         #endregion
 
         //Tip 0ms runtime display =)))))))
