@@ -972,6 +972,11 @@ namespace LeetCode
                     break;
                 }
             }
+            if (pivot == -1)
+            {
+                Array.Reverse(nums);
+                return;
+            }
 
             for (int i = nums.Length - 1; i > pivot; i--)
             {
