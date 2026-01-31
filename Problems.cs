@@ -1008,7 +1008,7 @@ namespace LeetCode
                 {
                     left = mid + 1;
                 }
-                else
+                else if (nums[mid] > target && nums[mid + 1] < target )
                 {
                     right = mid - 1;
                 }
