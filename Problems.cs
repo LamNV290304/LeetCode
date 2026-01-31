@@ -992,6 +992,11 @@ namespace LeetCode
             Array.Reverse(nums, pivot + 1, nums.Length - pivot - 1);
             return;
         }
+
+        public int Search(int[] nums, int target)
+        {
+            return -1;
+        }
         #endregion
 
         //Tip 0ms runtime display =)))))))
